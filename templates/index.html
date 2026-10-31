@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
+    <meta name="theme-color" content="#f8f9fa">
+    <title>AI Companion — DevFest Okayama</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-shell">
+        <header class="app-header">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" fill="none">
+                        <path d="M13.5 8.5 6 16l4.5 4.5" stroke="#EA4335" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6 16l7.5 7.5" stroke="#4285F4" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M18.5 8.5 26 16l-4.5 4.5" stroke="#34A853" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M26 16l-7.5 7.5" stroke="#FBBC04" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <div class="brand-title-row">
+                    <h1>AI Companion</h1>
+                    <span class="devfest-pill">DevFest Okayama</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="companion-stage" aria-label="AIキャラクターと話す">
+            <header class="stage-header">
+                <p class="eyebrow">YOUR AI COMPANION</p>
+                <p id="status" role="status">会話をはじめましょう</p>
+            </header>
+            <div class="character-scene">
+                <div id="character-viewer" class="character-viewer">
+                    <img id="character-image" src="/static/images/char-mouth-closed.png" alt="AIアシスタントのアバター">
+                    <span class="voice-indicator" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+                </div>
+            </div>
+            <div class="reply-bubble">
+                <p id="reply-text" tabindex="0" aria-live="polite">DevFest Okayama へようこそニャ！</p>
+            </div>
+            <nav id="sources" aria-label="検索の出典"></nav>
+            <iframe id="search-suggestions" title="Google Search suggestions" sandbox="allow-popups allow-popups-to-escape-sandbox" hidden></iframe>
+
+            <footer class="composer-area">
+                <audio id="speech-audio" hidden></audio>
+                <p id="audio-status" role="status"></p>
+                <button id="play-audio" type="button" class="quiet-button" hidden>音声を再生</button>
+                <div class="composer">
+                    <label class="sr-only" for="text-input">メッセージ</label>
+                    <textarea id="text-input" rows="1" maxlength="8000" placeholder="メッセージを入力…" aria-describedby="input-hint"></textarea>
+                    <div class="composer-tools">
+                        <label class="voice-control" for="voice-select">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 5 6 9H3v6h3l5 4zM15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>
+                            <span>読み上げ</span><select id="voice-select"><option value="Leda">Leda</option></select>
+                        </label>
+                        <button id="send-button" type="button" aria-label="メッセージを送信" disabled>
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <p id="input-hint" class="input-hint">メッセージを送ると、キャラクターが声でお返事します。<span> Enterで送信 · Shift + Enterで改行</span></p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
